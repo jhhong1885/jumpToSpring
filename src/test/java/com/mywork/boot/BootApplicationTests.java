@@ -5,8 +5,10 @@ import com.mywork.boot.repository.QuestionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
+import java.util.Optional;
 
 @SpringBootTest
 class BootApplicationTests {
@@ -15,16 +17,11 @@ class BootApplicationTests {
 
 	@Test
 	void testJpa(){
-		Question q1 = new Question();
-		q1.setSubject("test");
-		q1.setContent("테스트입니다.");
-		q1.setCreateAt(LocalDateTime.now());
-		this.questionRepository.save(q1);
+		Optional<Question> optional = this.questionRepository.findById(1);
+		assertTrue(optional.isPresent());
 
-		Question q2 = new Question();
-		q2.setSubject("스프링부트 테스트");
-		q2.setContent("스프링 테스트입니다.");
-		q2.setCreateAt(LocalDateTime.now());
-		this.questionRepository.save(q2);  // 두번째 질문 저장
+		Question question = optional.get();
+		question.setSubject("hello world");
+		this.questionRepository.save(question);
 	}
 }
