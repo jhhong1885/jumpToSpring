@@ -19,8 +19,9 @@ public class Answer {
     private String content;
 
     @CreatedDate
-    private LocalDateTime create_at;
+    @Column(name = "created_at")
+    private LocalDateTime createAt;
 
     @ManyToOne
-    private Question quesion;
+    private Question question;
 }

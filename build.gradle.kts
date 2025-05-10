@@ -34,6 +34,8 @@ dependencies {
 	testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	testImplementation("org.junit.jupiter:junit-jupiter")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {

@@ -23,7 +23,8 @@ public class Question {
     private String content;
 
     @CreatedDate
-    private LocalDateTime create_at;
+    @Column(name = "created_at")
+    private LocalDateTime createAt;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
