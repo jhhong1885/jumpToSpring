@@ -1,6 +1,6 @@
-package com.mywork.boot.repository;
+package com.mywork.boot.question.repository;
 
-import com.mywork.boot.entity.Question;
+import com.mywork.boot.question.dto.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

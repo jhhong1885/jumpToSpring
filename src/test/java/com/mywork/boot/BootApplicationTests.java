@@ -1,9 +1,9 @@
 package com.mywork.boot;
 
-import com.mywork.boot.entity.Answer;
-import com.mywork.boot.entity.Question;
-import com.mywork.boot.repository.AnswerRepository;
-import com.mywork.boot.repository.QuestionRepository;
+import com.mywork.boot.answer.dto.Answer;
+import com.mywork.boot.question.dto.Question;
+import com.mywork.boot.answer.repository.AnswerRepository;
+import com.mywork.boot.question.repository.QuestionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
