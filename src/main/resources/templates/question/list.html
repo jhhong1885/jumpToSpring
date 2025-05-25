@@ -16,16 +16,11 @@
     </tr>
     </thead>
     <tbody>
-        <tr th:each="question,loop : ${questionList}">
+        <tr th:each="question, loop : ${questionList}">
             <td>[[${loop.index} + 1]]</td>
-            <td>[[${loop.current.subject}]]</td>
+            <td><a th:href="@{|/question/detail/${loop.current.getId()}|}" th:text="${question.subject}"></a></td>
             <td>[[${loop.current.content}]]</td>
             <td>[[${loop.current.createdAt}]]</td>
-        </tr>
-        <tr>
-            <td th:if="${questionList == null}">
-                213123132
-            </td>
         </tr>
     </tbody>
 </table>
