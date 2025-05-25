@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>질문 목록</title>
+</head>
+<body>
+<h1>질문 목록</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="question,loop : ${questionList}">
+            <td>[[${loop.index} + 1]]</td>
+            <td>[[${loop.current.subject}]]</td>
+            <td>[[${loop.current.content}]]</td>
+            <td>[[${loop.current.createdAt}]]</td>
+        </tr>
+        <tr>
+            <td th:if="${questionList == null}">
+                213123132
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
