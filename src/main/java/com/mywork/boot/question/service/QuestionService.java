@@ -3,6 +3,7 @@ package com.mywork.boot.question.service;
 import com.mywork.boot.question.dto.Question;
 import com.mywork.boot.question.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,15 @@ import java.util.Optional;
 @Service
 public class QuestionService {
     private final QuestionRepository questionRepository;
+
+    public Question getQuestion(int id){
+        Optional<Question> question = this.questionRepository.findById(id);
+        if(question.isPresent()){
+            return question.get();
+        }else {
+            throw new DataRetrievalFailureException("question not found");
+        }
+    }
 
     public List<Question> getQuestionList(){
         return this.questionRepository.findAll();

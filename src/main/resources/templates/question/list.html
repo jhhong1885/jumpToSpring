@@ -3,25 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>질문 목록</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <h1>질문 목록</h1>
-<table border="1">
+
+<table>
     <thead>
     <tr>
-        <th>번호</th>
         <th>제목</th>
         <th>내용</th>
         <th>작성일</th>
+        <th>상세</th>
     </tr>
     </thead>
     <tbody>
-        <tr th:each="question, loop : ${questionList}">
-            <td>[[${loop.index} + 1]]</td>
-            <td><a th:href="@{|/question/detail/${loop.current.getId()}|}" th:text="${question.subject}"></a></td>
-            <td>[[${loop.current.content}]]</td>
-            <td>[[${loop.current.createdAt}]]</td>
-        </tr>
+    <tr th:each="question : ${questionList}">
+        <td th:text="${question.subject}">제목</td>
+        <td th:text="${question.content}">내용</td>
+        <td th:text="${#temporals.format(question.createdAt, 'yyyy-MM-dd HH:mm')}">작성일</td>
+        <td>
+            <a th:href="@{'/question/detail/' + ${question.id}}">보기</a>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(questionList)}">
+        <td colspan="4">질문이 없습니다.</td>
+    </tr>
     </tbody>
 </table>
 </body>
