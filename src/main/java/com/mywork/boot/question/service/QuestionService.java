@@ -37,7 +37,7 @@ public class QuestionService {
         Question question = new Question();
 
         question.setSubject(subject);
-        question.setContent(subject);
+        question.setContent(content);
         question.setCreatedAt(LocalDateTime.now());
 
         this.questionRepository.save(question);

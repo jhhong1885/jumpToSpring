@@ -1,10 +1,14 @@
 package com.mywork.boot.question.controller;
 
+import com.mywork.boot.answer.dto.AnswerForm;
+import com.mywork.boot.question.dto.QuestionForm;
 import com.mywork.boot.question.service.QuestionService;
+import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import com.mywork.boot.question.dto.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,28 +25,37 @@ public class QuestionContoller {
         List<Question> questionList = this.questionService.getQuestionList();
         model.addAttribute("questionList", questionList);
 
-        return "question/list";
+        return "question_list";
     }
 
     @GetMapping(value = "/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id){
+    public String detail(
+            Model model,
+            @PathVariable("id") Integer id,
+            AnswerForm answerForm
+    ){
         Optional<Question> list = this.questionService.getQuestionDetail(id);
         list.ifPresent(question -> model.addAttribute("question", question));
 
-        return "question/detail";
+        return "question_detail";
     }
 
     @GetMapping(value="/create")
-    public String createView(){
-        return "question/create";
+    public String createView(
+            QuestionForm questionForm
+    ){
+        return "question_form";
     }
 
     @PostMapping(value="/create")
     public String create(
-            @RequestParam(value="subject") String subject,
-            @RequestParam(value = "content") String content
+            @Valid QuestionForm questionForm,
+            BindingResult bindingResult
     ){
-        this.questionService.create(subject, content);
+        if(bindingResult.hasErrors()){
+            return "question_form";
+        }
+        this.questionService.create(questionForm.getSubject(), questionForm.getContent());
         return "redirect:/question/list";
     }
 }

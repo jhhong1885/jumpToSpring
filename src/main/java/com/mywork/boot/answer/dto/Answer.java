@@ -21,7 +21,7 @@ public class Answer {
 
     @CreatedDate
     @Column(name = "created_at")
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     @ManyToOne
     private Question question;

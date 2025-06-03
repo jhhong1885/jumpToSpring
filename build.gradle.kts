@@ -27,7 +27,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.mysql:mysql-connector-j")
@@ -36,6 +36,7 @@ dependencies {
 	testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 	testImplementation("org.junit.jupiter:junit-jupiter")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
