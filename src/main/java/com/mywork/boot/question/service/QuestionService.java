@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,5 +31,15 @@ public class QuestionService {
 
     public Optional<Question> getQuestionDetail(int id){
         return this.questionRepository.findById(id);
+    }
+
+    public void create(String subject, String content){
+        Question question = new Question();
+
+        question.setSubject(subject);
+        question.setContent(subject);
+        question.setCreatedAt(LocalDateTime.now());
+
+        this.questionRepository.save(question);
     }
 }
