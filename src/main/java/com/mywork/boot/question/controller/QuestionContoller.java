@@ -4,6 +4,7 @@ import com.mywork.boot.answer.dto.AnswerForm;
 import com.mywork.boot.question.dto.QuestionForm;
 import com.mywork.boot.question.service.QuestionService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import com.mywork.boot.question.dto.Question;
 import lombok.RequiredArgsConstructor;
@@ -21,9 +22,9 @@ public class QuestionContoller {
     private final QuestionService questionService;
 
     @GetMapping("/list")
-    public String list(Model model){
-        List<Question> questionList = this.questionService.getQuestionList();
-        model.addAttribute("questionList", questionList);
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page){
+        Page<Question> paging = this.questionService.getPageList(page);
+        model.addAttribute("paging", paging);
 
         return "question_list";
     }
