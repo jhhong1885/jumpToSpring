@@ -11,7 +11,7 @@ import lombok.Setter;
 public class UserCreateForm {
     @Size(min = 3, max = 25)
     @NotEmpty(message = "아이디는 필수항목입니다.")
-    private String userName;
+    private String username;
 
     @NotEmpty(message = "비밀번호는 필수항목입니다.")
     private String password1;

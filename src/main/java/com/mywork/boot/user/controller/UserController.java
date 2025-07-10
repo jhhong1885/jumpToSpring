@@ -41,7 +41,7 @@ public class UserController {
 
         try {
             userService.create(
-                    userCreateRequest.getUserName(),
+                    userCreateRequest.getUsername(),
                     userCreateRequest.getPassword1(),
                     userCreateRequest.getEmail()
             );
